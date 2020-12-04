@@ -21,11 +21,9 @@ Now pick the display that is marked as "connected."
 $dpl=$_GET['disp'];
 $cres=$_GET['curres'];
 $tgt=$_GET['tres'];
-$cwd = number_format((float)strtok($cres, 'x'));
-$twd = number_format((float)strtok($tgt, 'x'));
-echo $cwd;
-echo $twd;
-$rscale = (float)($twd/$cwd);
+$cwd = floatval(strtok($cres, 'x'));
+$twd = floatval(strtok($tgt, 'x'));
+$rscale = number_format(($twd/$cwd), 2);
 
 echo "xrandr --output $dpl --panning $tgt --scale $rscale";
 ?>
