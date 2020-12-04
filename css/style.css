@@ -484,7 +484,7 @@
 	.wrapper.style1 {
 		padding-top: 10em;
 		padding-bottom: 2em;
-		background: url(../images/bg.jpg) no-repeat center top;
+		background: url(../images/bg.webp) no-repeat center top;
 		background-size: cover;
 		background-attachment: fixed;
 		box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.7);
