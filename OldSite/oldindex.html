@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>The Firedreamer Project</title>
+		<style>html{visibility: hidden;opacity:0;}</style>
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<script>
+		var TxtType = function(el, toRotate, period) {
+						this.toRotate = toRotate;
+						this.el = el;
+						this.loopNum = 0;
+						this.period = parseInt(period, 10) || 2000;
+						this.txt = '';
+						this.tick();
+						this.isDeleting = false;
+				};
+
+				TxtType.prototype.tick = function() {
+						var i = this.loopNum % this.toRotate.length;
+						var fullTxt = this.toRotate[i];
+
+						if (this.isDeleting) {
+						this.txt = fullTxt.substring(0, this.txt.length - 1);
+						} else {
+						this.txt = fullTxt.substring(0, this.txt.length + 1);
+						}
+
+						this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+						var that = this;
+						var delta = 200 - Math.random() * 100;
+
+						if (this.isDeleting) { delta /= 2; }
+
+						if (!this.isDeleting && this.txt === fullTxt) {
+						delta = this.period;
+						this.isDeleting = true;
+						} else if (this.isDeleting && this.txt === '') {
+						this.isDeleting = false;
+						this.loopNum++;
+						delta = 500;
+						}
+
+						setTimeout(function() {
+						that.tick();
+						}, delta);
+				};
+
+				window.onload = function() {
+						var elements = document.getElementsByClassName('typewrite');
+						for (var i=0; i<elements.length; i++) {
+								var toRotate = elements[i].getAttribute('data-type');
+								var period = elements[i].getAttribute('data-period');
+								if (toRotate) {
+									new TxtType(elements[i], JSON.parse(toRotate), period);
+								}
+						}
+						// INJECT CSS
+						var css = document.createElement("style");
+						css.type = "text/css";
+						css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff font-size: 128px}";
+						document.body.appendChild(css);
+				};
+		</script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="preload" href="css/skel.css" as="style">
+			<link rel="preload" href="css/style.css" as="style">
+			<link rel="preload" href="css/style-wide.css" as="style">
+		</noscript>
+		<script src="https://kit.fontawesome.com/a8eba24bea.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div id="header">
+			<div id="logo">
+				<h1><a href="index.html">FIREDREAMER</a></h1>
+			</div>
+			<nav id="nav">
+				<ul>
+					<li class="active"><a href="index.html">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<!-- Wrapper -->
+			<div class="wrapper style1">
+
+				<!-- Header -->
+
+
+				<!-- Banner -->
+					<div id="banner" class="container">
+						<section>
+							<img src="img/logo.gif" width= 128px>
+							<br><br>
+							<h1><font size=186px>Sapere Aude.</font></h1><br>
+							<h1>
+							<div id="typewriter-size-fix">
+  						 Dare to <a class="typewrite" data-period="2000" data-type='[ "Dream.", "Think for Yourself.", "Know More.", "Learn." ]'>
+    					<span class="wrap"></span>
+  						</a>
+						</div>
+							</h1>
+
+							<br><br>
+							<p>The Firedreamer Project is the umbrella project showcasing all the various games, media, software and initiatives conceived by TheAidency.</p>
+						</section>
+					</div>
+
+				<!-- Extra -->
+					<div id="extra">
+						<div class="container">
+							<div class="row no-collapse-1">
+								<section class="4u"> <a href="#" class="image featured"><img src="images/ogames.jpg" alt=""></a>
+									<div class="box">
+										<p><strong>OpenGames</strong><br> is the commitment to making the source code to the pre-content version of games. It allows beginners in gamedev to
+											start from a pre-made foundation, and enthusiasts to observe how certain features are implemented. <br><br>
+										</p>
+									</div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="images/sps.jpg" alt=""></a>
+									<div class="box">
+										<p><strong>Spatialsurf</strong><br> Originally <a href="https://ldjam.com/events/ludum-dare/41/spatialsurf"><b>developed in 72 hours for Ludum Dare 41</b></a>, securing #244 off of over 3000 entries from all over the world. It has been recently revamped
+											for <a href="https://play.google.com/store/apps/details?id=com.Firedreamer.Spatialsurf&hl=en&gl=US"><b>Android</b></a>, and has been made <a href="https://github.com/TheAidency/Spatialsurf"><b>open source</b></a> under the Mozilla Public License
+											as a part of the OpenGames initiative.
+										</p>
+									</div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="images/xrd.jpg" alt=""></a>
+									<div class="box">
+										<p><strong>XRandR Scale Generator</strong><br>
+											Many people do not use full-HD monitors, and small resolution monitors are a pain to use. Users of the XOrg display server can simulate virtual super resolution using the XRandR utility. <a href="https://www.firedreamer.com/php/xrandr.php"><b>This
+											PHP script</b></a> generates an XRandR command to be used for super or subscaling your display.<br>
+											See also: <a href="https://github.com/TheAidency/xrDS">xrDS</a>, a nifty keybind for switching between resolutions.
+										</p>
+								</section><br>
+							</div>
+						</div>
+
+					</div><br><br>
+					<div class="container">
+						<div class="row no-collapse-1">
+							<section class="4u"> <a href="#" class="image featured"><img src="images/oinc.jpg" alt=""></a>
+								<div class="box">
+									<p><strong>Office, Inc.</strong><br> A game about resource management at a terrible corporation which decided it better to hire many unskilled code monkeys and one skilled developer.<br><br> Made in 48 hours for <a href="https://ldjam.com/events/ludum-dare/46/office-inc"><b>Ludum Dare 46</b></a>
+									</p>
+								</div>
+							</section>
+							<section class="4u"> <a href="#" class="image featured"><img src="images/u2i.jpg" alt=""></a>
+								<div class="box">
+									<p><strong>Used To It.</strong><br>
+										A narrative interactive experience of life as a social recluse. <br> Ranked #44 in "Mood" out of over 3000 entries internationally. <br><br>Made in 48 hours for <a href="https://ldjam.com/events/ludum-dare/47/used-to-it"><b>Ludum Dare 47</b></a>
+									</p>
+								</div>
+							</section>
+							<section class="4u"> <a href="#" class="image featured"><img src="images/ta.jpg" alt=""></a>
+								<div class="box">
+									<p><strong>TheAidency on YouTube</strong><br><br><br>
+										Videos and small snippets of game development, life and technology, over at <a href="https://www.youtube.com/channel/UC6KejhuIj6wMbUxC3YzCqlQ"><b>the YouTube channel.</b></a><br><br><br>
+									</p>
+							</section><br>
+						</div>
+					</div>
+
+				</div>
+				</div>
+				<div id="about" class="wrapper style4">
+					<div class="container">
+						<section>
+							<header class="major">
+								<h2>About</h2>
+								<span class="byline">Who is TheAidency?</span>
+							</header>
+							TheAidency is a 19(almost 20~!) year-old game developer, tech-enthusiast and FLOSS advocate. He has developed multiple short games from 2018, though he has dabbled in the world of game development since 2013. He has also
+							worked on multiple AR apps for the now-liquidated AR startup Aabhas, been a focus tester for the e-sports app eBlitz, and is a feverent Ludum Dare jammer. He has released multiple games on itch.io and the Google Play store, and believes in de-mistifying technology and using games as a medium to express narratives, themes and concepts, with the intent of provoking some stream of thought in his players.
+							At present, he is majoring in Computer Science(hardly a year left!), besides working on his not-exactly-first large-scale pipe dream side project, Damage Done.
+						</section>
+						<br><br><br>
+						<center><img src="images/aidenround.png"></center>
+					</div>
+				</div>
+				<!-- Main -->
+					<div id="main" class="wrapper style3">
+						<center><h1><font size=64px>Some facts about <br><br>TheAidency:</h1></font><br></center>
+						<div class="container">
+							<div class="row">
+
+								<!-- Content -->
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fab fa-unity">
+												<a href="https://drive.google.com/drive/folders/1sdhN46PQB-B3zQ79-arWlYkVuglH3AYr?usp=sharing"><h3>5+ years of experience with game development</h3></a>
+												<span>Developing since 2013, started with <a href="https://answers.unity.com/users/111544/abhip.html">Unity v3.5</a></span> </li>
+											<li class="fab fa-linux">
+												<h3>Works on Linux</h3>
+												<span>I use Arch btw.</span> </li>
+										</ul>
+									</section>
+								</div>
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fab fa-github-alt">
+												<a href="https://github.com/TheAidency"><h3>GitHub Arctic Code Vault Contributor, 2020</h3></a>
+												<span>Talk about a code freeze. Brrrrr.</span> </li>
+											<li class="fas fa-microphone-alt">
+												<h3>ENTP/Debater archetype on the Myers-Briggs Type Indicator.</h3>
+												<span>Bold, creative and free spirited.</span> </li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div>
+	</div>
+		<div id="contact" class="wrapper style2">
+				<center><h1><font size=64px>CONTACT</h1></font><br></center>
+				<div class="container">
+					<div class="row">
+
+						<!-- Content -->
+						<div class="6u">
+							<section>
+								<ul class="style">
+									<li class="fas fa-envelope">
+										<a href="mailto:theaidency@gmail.com"><h3>theaidency@gmail.com</h3></a>
+									</li>
+									<li class="fab fa-discord">
+										<h3>TheAidency#1104</h3>
+									</li>
+								</ul>
+							</section>
+						</div>
+						<div class="6u">
+							<section>
+								<ul class="style">
+									<li class="fab fa-twitter">
+										<a href="https://twitter.com/TheAidency"><h3>@TheAidency</h3></a>
+									</li><br>
+										<li class="fab fa-instagram">
+											<a href="https://www.instagram.com/theaidency/"><h3>@theaidency</h3></a>
+										</li>
+								</ul>
+							</section>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	<!-- Copyright -->
+	<div id="copyright">
+		<div class="container">
+			<div class="copyright">
+				<p>A <a href="https://www.github.com/TheAidency/">TheAidency</a> Project</p>
+			</div>
+		</div>
+	</div>
+
+
+
+	</body>
+</html>
