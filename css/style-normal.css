@@ -2,11 +2,11 @@
 		font-size: 12pt;
 	}
 
-	header.major h2 {
+	headerMain.major h2 {
 		font-size: 2.5em;
 	}
 
-	header.major .byline {
+	headerMain.major .byline {
 		font-size: 1em;
 	}
 

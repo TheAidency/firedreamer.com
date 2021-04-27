@@ -6,11 +6,11 @@
 		padding-top: 44px;
 	}
 
-	header.major h2 {
+	headerMain.major h2 {
 		font-size: 1.8em;
 	}
 
-	header.major .byline {
+	headerMain.major .byline {
 		font-size: 1em;
 	}
 

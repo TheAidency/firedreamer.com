@@ -44,14 +44,14 @@
 	h1, h2, h3, h4, h5, h6 {
 		margin: 0;
 		padding: 0;
-		color: inherit;
+		color: white;
 		font-family: 'Raleway', sans-serif;
 		font-weight: 700;
-		font-size: 32px;
+		font-size: 28px;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-			color: inherit;
+			color: white;
 			text-decoration: none;
 		}
 
@@ -91,12 +91,13 @@
 		text-align: center;
 	}
 
-	header.major {
+	headerMain.major {
 		padding-bottom: 3em;
+		font-size: 2;
 		text-transform: uppercase;
 	}
 
-		header.major h2 {
+		headerMain.major h2 {
 			margin: 0;
 			padding: 0;
 			line-height: 1em;
@@ -104,7 +105,11 @@
 			font-size: 2.8em;
 		}
 
-		header.major .byline {
+		headerMain.major a:hover{
+			color: #ffffff;
+		}
+
+		headerMain.major .byline {
 			display: block;
 			margin: 0.50em 0 0 0;
 			padding: 0 0 0.5em 0;
@@ -486,7 +491,7 @@
 		padding-bottom: 2em;
 		background: url(../images/bg.webp) no-repeat center top;
 		background-size: cover;
-		background-attachment: fixed;
+		background-attachment: scroll;
 		box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.7);
 		-webkit-backface-visibility: hidden;
 		-webkit-transform: translateZ(0);
@@ -511,7 +516,7 @@
 
 /* Header */
 
-	#header {
+	#headerMain {
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -524,31 +529,31 @@
 
 /* Logo */
 
-	#logo {
+	#logoHead {
 		font-size: 1.2em;
 		cursor: default;
 	}
 
-	#logo h1 {
+	#logoHead h1 {
 		display: inline-block;
 		text-transform: uppercase;
 	}
 
 /* Navigation */
 
-	#nav {
+	#navigator {
 		position: absolute;
 		right: 0;
 		top: 0;
 		cursor: default;
 	}
 
-	#nav ul li {
+	#navigator ul li {
 		display: inline-block;
 		padding: 1.25em 1.25em;
 	}
 
-	#nav ul li a {
+	#navigator ul li a {
 		-moz-transition: color 0.35s ease-in-out;
 		-webkit-transition: color 0.35s ease-in-out;
 		-o-transition: color 0.35s ease-in-out;
@@ -560,7 +565,7 @@
 		text-decoration: none;
 	}
 
-	#nav ul li a:hover {
+	#navigator ul li a:hover {
 		color: #fff;
 	}
 
@@ -630,27 +635,3 @@
 			color: #ddd;
 			color: rgba(255, 255, 255, 0.4) !important;
 		}
-
-/* Box */
-
-	.box {
-		padding: 3em 2em;
-		background: #0f0f0f;
-		text-align: center;
-		border-radius: 0px 0px 6px 6px;
-	}
-
-	.typewriter-size-fix .a{
-		color: #f00;
-		font-size: 128px;
-	}
-
-	.wrap{
-		font-weight: bold;
-		font-size: 32px;
-	}
-
-	html {
-	    visibility: visible;
-	    opacity: 1;
-	}
